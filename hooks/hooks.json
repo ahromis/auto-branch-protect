@@ -1,0 +1,60 @@
+[
+  {
+    "id": "branch-protection",
+    "execute-command": "/var/run/webhooks/branch-protection.sh",
+    "pass-arguments-to-command": [
+      {
+        "source": "payload",
+        "name": "repository.url"
+      },
+      {
+        "source": "payload",
+        "name": "repository.default_branch"
+      },
+      {
+        "source": "payload",
+        "name": "sender.login"
+      }
+    ],
+    "trigger-rule": {
+      "and": [
+	{
+          "match":
+          {
+            "type": "payload-hash-sha1",
+            "secret": "{{ getenv "WEBHOOK_SECRET" | js }}",
+            "parameter":
+            {
+              "source": "header",
+              "name": "X-Hub-Signature"
+            }
+          }
+        },
+        {
+          "match":
+          {
+            "type": "value",
+            "value": "true",
+            "parameter":
+            {
+              "source": "payload",
+              "name": "repository.has_issues"
+            }
+          }
+        },
+        {
+          "match":
+          {
+            "type": "value",
+            "value": "created",
+            "parameter":
+            {
+              "source": "payload",
+              "name": "action"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
