@@ -6,7 +6,7 @@ This is a service that listens to GitHub organization events. When a new reposit
 
 ### Create GitHub Webhook
 
-Create a GitHub  webhook in your organization by following the documentation [here](https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks#setting-up-a-webhook). Note that this needs to be created at the organization level.
+Create a GitHub  webhook in your organization by following the [documentation](https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks#setting-up-a-webhook). Note that this needs to be created at the organization level.
 
 1. For **Payload URL**
     1. Allow external ingress traffic on port 9000 to the host where this service will be running. It should look similar to: `http://webhooks.example.com:9000/hooks/branch-protection`
@@ -18,7 +18,7 @@ Create a GitHub  webhook in your organization by following the documentation [he
 
 ### Create GitHub Personal Access Token (PAT)
 
-- Follow the documentation [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create a PAT for use with this webhook service. Make note of the token value as it will be used later.
+- Follow the [documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create a PAT for use with this webhook service. Make note of the token value as it will be used later.
 
 ### Install Container Runtime
 
